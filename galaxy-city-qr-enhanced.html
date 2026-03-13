@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Enhanced QR Card</title>
+    <style>
+        body {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            background-color: #f0f0f0;
+            font-family: Arial, sans-serif;
+        }
+
+        .qr-card {
+            background: white;
+            border: solid 10px black; /* Enhanced thickness */
+            border-radius: 10px;
+            padding: 20px;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+        }
+
+        .progress-bar {
+            width: 100%;
+            background-color: #eee;
+            border-radius: 5px;
+            overflow: hidden;
+        }
+
+        .progress {
+            height: 20px;
+            background-color: #76c7c0;
+            width: 0;
+            transition: width 1s;
+        }
+    </style>
+</head>
+<body>
+    <div class="qr-card">
+        <h1>QR Code</h1>
+        <div class="progress-bar">
+            <div class="progress" id="progress"></div>
+        </div>
+    </div>
+    <script>
+        let progress = 0;
+        const progressBar = document.getElementById('progress');
+
+        const interval = setInterval(() => {
+            if (progress < 100) {
+                progress++;
+                progressBar.style.width = progress + '%';
+            } else {
+                clearInterval(interval);
+            }
+        }, 100);
+    </script>
+</body>
+</html>
