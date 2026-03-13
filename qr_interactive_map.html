@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Creative QR Scene</title>
+    <style>
+        canvas {
+            border: 1px solid #000;
+            display: block;
+            margin: 0 auto;
+        }
+    </style>
+</head>
+<body>
+    <h1>Creative QR Scene with WebP Export</h1>
+    <canvas id="qrCanvas" width="400" height="400"></canvas>
+    <button id="exportBtn">Export as WebP</button>
+    <script>
+        const canvas = document.getElementById('qrCanvas');
+        const ctx = canvas.getContext('2d');
+
+        // Draw a sample QR code
+        ctx.fillStyle = 'black';
+        ctx.fillRect(100, 100, 200, 200);
+
+        function exportToWebP() {
+            const dataURL = canvas.toDataURL('image/webp');
+            const link = document.createElement('a');
+            link.href = dataURL;
+            link.download = 'qr_scene.webp';
+            link.click();
+        }
+
+        document.getElementById('exportBtn').onclick = exportToWebP;
+    </script>
+</body>
+</html>
